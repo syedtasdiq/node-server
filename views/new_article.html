@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>new article form</title>
+</head>
+
+<body>
+    <form method='POST'>
+        <input type="text" name="title" placeholder="title">
+        <input type="text" name="content" placeholder="content">
+        <button>submit</button>
+    </form>
+    <script type="text/javascript" src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+    <script type="text/javascript">
+    
+
+    	$('button').click(function(e){
+    		e.preventDefault();
+		    $.ajax({
+		            method: "POST",
+		            url: "http://localhost:3000/new_article",
+		            data: { title: $('[name="title"').val(), content: $('[name="content"').val() }
+		        })
+		        .done(function(msg) {
+		            console.log("response received: " + msg);
+		        });
+    	})
+    </script>
+</body>
+
+</html>
